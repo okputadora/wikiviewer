@@ -1,11 +1,13 @@
 $(document).ready(function(){
 
   var displayContent = function(data){
-    console.log(data);
-    for (var i=0; i <= 10; i++){
-      $("#output").append(data[1][i]);
-      $("#output").append(data[2][i]);
-      $("#output").append(data[3][i]);
+    //Clear out old contents
+    $("#output").html("");
+    for (var i=0; i < data[1].length; i++){
+      $("#output").append("<div class='output-content'><div class='title'><a href='" +
+                          +data[3][i] + "'>" +data[1][i] + "</a></div>" +
+                          "<div class='description'>"+data[2][i]+ "</div></div>");
+      //put in link div
     }
   };
   console.log("Hello");
@@ -15,24 +17,5 @@ $(document).ready(function(){
     console.log(url);
     console.log(searchTerm);
     $.getJSON(url, displayContent, "jsonp")
-    // $.ajax({
-    //   url: url,
-    //   type: 'GET',
-    //   contentType: "application/json; charset=utf-8",
-    //   async: false,
-    //   dataType: 'json',
-    //   success: function(data, status, jqXHR){
-    //       console.log(data);
-    //   }
-    // })
-    // .done(function(){
-    //   console.log("success");
-    // })
-    // .fail(function(){
-    //   console.log("fail");
-    // })
-    // .always(function(){
-    //   console.log("complete");
-    // });
   });
 });
